@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+
+        // import kaboom lib
+        import kaboom from "https://unpkg.com/kaboom@3000.0.1/dist/kaboom.mjs";
+        
+        // initialize kaboom context
+        kaboom();
+        
+        // add a piece of text at position (120, 80)
+        add([
+            text("hello"),
+            pos(50, 50),
+        ]);
+        loadSprite("bird", "sprites/bird.png")
+        const bird=add([
+            sprite("bird"),
+            pos(100, 100),
+            scale(0.2),
+            //color(255, 0, 0),
+            //rotate(30)
+            area(),
+            body()
+        ])
+        onKeyPress("space", () => {
+            bird.jump()
+        })
+        setGravity(1000)
+        add([
+            rect(width(), 48),
+            pos(0, height() - 48),
+            outline(5),
+            area(),
+            body({ isStatic: true }),
+            color(127, 200, 255),
+        ])
+    </script>
+</body>
+</html>
